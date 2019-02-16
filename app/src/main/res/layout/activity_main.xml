@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     android:background="@android:color/background_dark"
     tools:context=".MainActivity">
 
@@ -123,7 +124,7 @@
 
                 android:layout_weight="1"
 
-                android:text="7" />
+                android:text="@string/seven" />
 
             <Button
 
@@ -135,7 +136,7 @@
 
                 android:layout_weight="1"
 
-                android:text="8" />
+                android:text="@string/eight" />
 
             <Button
 
@@ -147,7 +148,7 @@
 
                 android:layout_weight="1"
 
-                android:text="9" />
+                android:text="@string/nine" />
 
             <Button
 
@@ -159,7 +160,7 @@
 
                 android:layout_weight="1"
 
-                android:text="*" />
+                android:text="@string/multi" />
 
 
         </LinearLayout>
@@ -173,28 +174,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="4" />
+                android:text="@string/four" />
 
             <Button
                 android:id="@+id/btFive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="5" />
+                android:text="@string/five" />
 
             <Button
                 android:id="@+id/btSix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="6" />
+                android:text="@string/six" />
 
             <Button
                 android:id="@+id/btMinus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="-" />
+                android:text="@string/minus" />
 
         </LinearLayout>
 
@@ -207,28 +208,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="1" />
+                android:text="@string/one" />
 
             <Button
                 android:id="@+id/btTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="2" />
+                android:text="@string/two" />
 
             <Button
                 android:id="@+id/btThree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="3" />
+                android:text="@string/three" />
 
             <Button
                 android:id="@+id/btPlus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="+" />
+                android:text="@string/plus" />
         </LinearLayout>
 
         <LinearLayout
@@ -240,28 +241,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="+/_" />
+                android:text="@string/plus_minus" />
 
             <Button
                 android:id="@+id/btZero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="0" />
+                android:text="@string/zero" />
 
             <Button
                 android:id="@+id/btDot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="," />
+                android:text="@string/dot" />
 
             <Button
                 android:id="@+id/btEqually"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="=" />
+                android:text="@string/equally" />
 
         </LinearLayout>
 
