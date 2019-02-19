@@ -90,7 +90,7 @@
             android:layout_gravity="bottom">
 
             <Button
-                android:id="@+id/btAbs"
+                android:id="@+id/btSqrt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

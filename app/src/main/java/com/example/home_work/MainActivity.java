@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button btOne, btTwo, btThree, btFour, btFive;
     Button btSix, btSeven, btEight, btNine, btZero;
-    Button btPlus, btMinus, btMulti, btDivision, btEqual, btClear,btAbs,btPlusMinus;
+    Button btPlus, btMinus, btMulti, btDivision, btEqual, btClear,btSqrt,btPlusMinus;
     EditText text;
     int operand1, operand2, flagAction,plusMinus;
     double result;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btMulti = (Button) findViewById(R.id.btMulti);
         btDivision = (Button) findViewById(R.id.btDivision);
         btEqual = (Button) findViewById(R.id.btEqually);
-        btAbs = (Button) findViewById(R.id.btAbs);
+        btSqrt = (Button) findViewById(R.id.btSqrt);
         btClear = (Button) findViewById(R.id.btClear);
         text = (EditText) findViewById(R.id.textInput);
         text.setInputType(InputType.TYPE_NULL);
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btDivision.setOnClickListener(this);
         btClear.setOnClickListener(this);
         btEqual.setOnClickListener(this);
-        btAbs.setOnClickListener(this);
+        btSqrt.setOnClickListener(this);
 
 
         operand1 = 0;
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         result = 0;
         flagAction = 0;
         plusMinus = 0;
-        text.setText("|");
+        text.setText("");
     }
 
     public void onClick(View v){
@@ -138,29 +138,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btPlus:
 
-                if (flagAction == 0) flagAction = 1;
-
+                if (flagAction == 0 || flagAction == 5) flagAction = 1;
+                text.setText(text.getText()+"+");
                 break;
 
             case R.id.btMinus:
 
-                if (flagAction == 0) flagAction = 2;
-
+                if (flagAction == 0 || flagAction == 5) flagAction = 2;
+                text.setText(text.getText() + "-");
                 break;
 
             case R.id.btMulti:
 
-                if (flagAction == 0) flagAction = 3;
-
+                if (flagAction == 0 || flagAction == 5) flagAction = 3;
+                text.setText(text.getText()+ "*");
                 break;
 
             case R.id.btDivision:
 
-                if (flagAction == 0) flagAction = 4;
-
+                if (flagAction == 0 || flagAction == 5) flagAction = 4;
+                text.setText(text.getText()+ "/");
                 break;
 
-            case R.id.btAbs:
+            case R.id.btSqrt:
 
                 if (flagAction == 0) flagAction = 5;
 
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (plusMinus == 1){
                             Toast.makeText(this, "Операция невозможна", Toast.LENGTH_LONG).show();
                         }else{
-                            result = Math.sqrt(operand2);
+                            result = operand1;
                         }
                         break;
 
@@ -252,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 flagAction = 0;
 
-                text.setText("|");
+                text.setText("");
 
                 break;
         }
@@ -262,15 +262,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(flagAction == 0){
 
-            operand1 = operand1*10 + num;
+            if (plusMinus == 1){
+                operand1 = operand1*10 + num;
 
-            text.setText(Integer.toString(operand1));
+                text.setText(text.getText()+Integer.toString(operand1));
+            }else{
+                operand1 = operand1*10 + num;
 
+                text.setText(Integer.toString(operand1));
+            }
+
+
+        }else if(flagAction == 5){
+            operand1 = (int) Math.sqrt(num);
+            text.setText(text.getText()+ Integer.toString(num));
         }else{
 
             operand2 = operand2*10 + num;
 
-            text.setText(Integer.toString(operand2));
+            text.setText(text.getText() + Integer.toString(operand2));
 
         }
 
