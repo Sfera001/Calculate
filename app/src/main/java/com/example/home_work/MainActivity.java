@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         }else if(flagAction == 5){
-            operand1 = (int) Math.sqrt(num);
+            operand1 = (int) Math.sqrt(operand1*10 + num);
             text.setText(text.getText()+ Integer.toString(num));
         }else{
 
