@@ -2,8 +2,10 @@ package com.example.home_work;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,9 +13,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button btOne, btTwo, btThree, btFour, btFive;
     Button btSix, btSeven, btEight, btNine, btZero;
-    Button btPlus, btMinus, btMulti, btDivision, btEqual, btClear;
-    TextView text;
-    int operand1, operand2, flagAction;
+    Button btPlus, btMinus, btMulti, btDivision, btEqual, btClear,btAbs,btPlusMinus;
+    EditText text;
+    int operand1, operand2, flagAction,plusMinus;
     double result;
 
 
@@ -34,11 +36,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btZero = (Button) findViewById(R.id.btZero);
         btPlus = (Button) findViewById(R.id.btPlus);
         btMinus = (Button) findViewById(R.id.btMinus);
+        btPlusMinus = (Button) findViewById(R.id.btPlusMinus);
         btMulti = (Button) findViewById(R.id.btMulti);
         btDivision = (Button) findViewById(R.id.btDivision);
         btEqual = (Button) findViewById(R.id.btEqually);
+        btAbs = (Button) findViewById(R.id.btAbs);
         btClear = (Button) findViewById(R.id.btClear);
-        text = (TextView) findViewById(R.id.textInput);
+        text = (EditText) findViewById(R.id.textInput);
+        text.setInputType(InputType.TYPE_NULL);
 
         btOne.setOnClickListener(this);
         btTwo.setOnClickListener(this);
@@ -52,17 +57,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btZero.setOnClickListener(this);
         btPlus.setOnClickListener(this);
         btMinus.setOnClickListener(this);
+        btPlusMinus.setOnClickListener(this);
         btMulti.setOnClickListener(this);
         btDivision.setOnClickListener(this);
         btClear.setOnClickListener(this);
         btEqual.setOnClickListener(this);
+        btAbs.setOnClickListener(this);
 
 
         operand1 = 0;
         operand2 = 0;
         result = 0;
         flagAction = 0;
-        text.setText(Integer.toString(operand1));
+        plusMinus = 0;
+        text.setText("|");
     }
 
     public void onClick(View v){
@@ -151,32 +159,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (flagAction == 0) flagAction = 4;
 
                 break;
+
+            case R.id.btAbs:
+
+                if (flagAction == 0) flagAction = 5;
+
+                text.setText("√");
+
+                break;
+
+            case R.id.btPlusMinus:
+                plusMinus = 1;
+                text.setText("-");
+                break;
             case R.id.btEqually:
 
                 switch(flagAction){
 
                     case 1:
 
-                        result = operand1 + operand2;
-
+                        if (plusMinus == 1){
+                            result = -operand1 + operand2;
+                        }else{
+                            result = operand1 + operand2;
+                        }
                         break;
 
                     case 2:
 
-                        result = operand1 - operand2;
-
+                        if (plusMinus == 1){
+                            result = -operand1 - operand2;
+                        }else{
+                            result = operand1 - operand2;
+                        }
                         break;
 
                     case 3:
-
-                        result = operand1 * operand2;
-
+                        if (plusMinus == 1){
+                            result = -operand1 * operand2;
+                        }else{
+                            result = operand1 * operand2;
+                        }
                         break;
 
                     case 4:
+                        if (plusMinus == 1){
+                            result =(double) -operand1 / (double) operand2;
+                        }else{
+                            result =(double) operand1 / (double) operand2;
+                        }
 
-                        result =(double) operand1 / (double) operand2;
 
+                        break;
+
+                    case 5:
+                        if (plusMinus == 1){
+                            Toast.makeText(this, "Операция невозможна", Toast.LENGTH_LONG).show();
+                        }else{
+                            result = Math.sqrt(operand2);
+                        }
                         break;
 
                     default:
@@ -211,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 flagAction = 0;
 
-                text.setText(Integer.toString(operand1));
+                text.setText("|");
 
                 break;
         }
